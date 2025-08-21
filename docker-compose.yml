@@ -1,7 +1,7 @@
 version: '3.8'
 services:
   mongodb:
-    image: omjaju18/mongo:latest
+    image: mongo:latest
     volumes:
       - mongo-data:/data/db
     environment:
@@ -13,8 +13,8 @@ services:
       - fullstack-chatapp
 
   backend:
-    image: omjaju18/chat_app_backend:latest
-    container_name: full-stack_backend
+    image: phuyalsandeep10/chatapp-backend:latest
+    container_name: chatapp-backend
     environment:
       - NODE_ENV=production
       - MONGODB_URI=mongodb://mongoadmin:secret@mongodb:27017/dbname?authSource=admin
@@ -26,8 +26,8 @@ services:
       - fullstack-chatapp
 
   frontend:
-    image: omjaju18/chat_app_frontend:latest 
-    container_name: full-stack_frontend
+    image: phuyalsandeep10/chatapp-frontend:latest 
+    container_name: chatapp-frontend
     ports:
       - "80:80"
     depends_on:
